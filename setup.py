@@ -1,5 +1,4 @@
 import re
-from pkg_resources import DistributionNotFound, get_distribution
 from setuptools import setup, find_packages
 
 INSTALL_REQUIRES = [
@@ -24,8 +23,16 @@ OPENCV_PACKAGES = [
 
 def is_installed(package_name: str) -> bool:
     try:
+        from pkg_resources import DistributionNotFound, get_distribution
         get_distribution(package_name)
         return True
+    except ImportError:
+        # If pkg_resources is not available, fall back to import-based check
+        try:
+            __import__(package_name)
+            return True
+        except ImportError:
+            return False
     except DistributionNotFound:
         return False
 
