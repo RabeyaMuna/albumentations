@@ -168,3 +168,8 @@ conda_build/
 data/
 
 notebooks/
+# Shell redirection artifacts
+=[0-9]*
+>[0-9]*
+*.tmp
+*.log
