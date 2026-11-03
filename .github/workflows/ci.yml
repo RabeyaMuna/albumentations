@@ -56,7 +56,7 @@ jobs:
 
   check_code_formatting_types:
     name: Check code formatting with ruff and mypy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: true
       matrix:
@@ -82,7 +82,7 @@ jobs:
 
   check_transforms_docs:
     name: Check Readme is not outdated
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         python-version: [3.9]
@@ -100,3 +100,4 @@ jobs:
         uv pip install --system .
     - name: Run checks for documentation
       run: python -m tools.make_transforms_docs check README.md
+  
