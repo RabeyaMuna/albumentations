@@ -47,7 +47,7 @@ jobs:
 
     - name: Install all dependencies
       run: |
-        uv pip install --system wheel
+        uv pip install --system wheel setuptools
         uv pip install --system -r requirements-dev.txt
         uv pip install --system .
 
@@ -100,4 +100,3 @@ jobs:
         uv pip install --system .
     - name: Run checks for documentation
       run: python -m tools.make_transforms_docs check README.md
-  
